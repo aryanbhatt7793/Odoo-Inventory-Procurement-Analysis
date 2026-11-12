@@ -1,144 +1,103 @@
-\# BUSINESS REQUIREMENTS DOCUMENT (BRD)
+# BUSINESS REQUIREMENTS DOCUMENT (BRD)
 
+## Project Information
 
+| Field | Details |
+|---|---|
+| Project | Inventory & Procurement Process Improvement |
+| Client | Apex Components Pvt. Ltd. (Hypothetical) |
+| Industry | Automotive Component Manufacturing |
+| ERP Platform | Odoo Community Edition |
+| Modules | Inventory and Purchase |
+| Project Type | Functional Analysis Case Study |
 
-\## Project Information
+## 1. Business Background
 
-\- Project: Inventory \& Procurement Process Improvement
+Apex Components Pvt. Ltd. is a hypothetical automotive component manufacturer that uses raw materials such as steel sheets, aluminium rods and copper wire in its production processes.
 
-\- Client: Apex Components Pvt. Ltd. (Hypothetical)
+For this case study, the existing business process is assumed to rely on manual inventory records and reactive procurement activities. These practices can lead to stock discrepancies, delayed purchasing decisions and potential production interruptions.
 
-\- Industry: Automotive Component Manufacturing
+## 2. Business Problem
 
-\- ERP: Odoo Community Edition
+The assumed business challenges include:
 
-\- Modules: Inventory and Purchase
+- Inventory quantities are not consistently updated.
+- Raw material shortages may be identified late.
+- Procurement requests are initiated reactively rather than through planned replenishment.
+- Purchase order tracking lacks centralized visibility.
+- Incoming material records are not consistently synchronized with inventory records.
 
-\- Project Type: Functional Analysis Case Study
+## 3. Business Objectives
 
+The project aims to:
 
+- Improve visibility of raw material stock levels.
+- Establish minimum and maximum inventory thresholds.
+- Identify products that require replenishment.
+- Standardize vendor and purchasing workflows.
+- Ensure inventory quantities are updated after goods receipt validation.
 
-\## 1. Business Background
-
-
-
-Apex Components Pvt. Ltd. manufactures automotive components using raw materials such as steel sheets, aluminium rods and copper wire.
-
-
-
-The company currently relies on manual inventory records and reactive procurement processes, resulting in stock discrepancies, delayed purchasing and potential production interruptions.
-
-
-
-\## 2. Business Problem
-
-
-
-\- Inventory quantities are not consistently updated.
-
-\- Raw material shortages are identified late.
-
-\- Procurement requests are initiated reactively.
-
-\- Purchase order tracking lacks centralized visibility.
-
-\- Incoming material records are not consistently synchronized with inventory.
-
-
-
-\## 3. Business Objectives
-
-
-
-\- Improve raw material stock visibility.
-
-\- Establish minimum and maximum inventory thresholds.
-
-\- Identify replenishment requirements.
-
-\- Standardize vendor and purchasing workflows.
-
-\- Ensure inventory updates after goods receipt.
-
-
-
-\## 4. Business Requirements
-
-
+## 4. Business Requirements
 
 | ID | Requirement | Priority |
-
 |---|---|---|
+| BR-01 | Maintain product and inventory records. | High |
+| BR-02 | Configure minimum and maximum stock levels. | High |
+| BR-03 | Identify products requiring replenishment. | High |
+| BR-04 | Generate purchase requests for quotation (RFQs). | High |
+| BR-05 | Confirm purchase orders. | High |
+| BR-06 | Validate incoming goods receipts. | High |
+| BR-07 | Update inventory quantities after receipt validation. | High |
 
-| BR-01 | Maintain product and stock records | High |
+## 5. Project Scope
 
-| BR-02 | Configure minimum and maximum stock levels | High |
+### 5.1 In Scope
 
-| BR-03 | Identify products requiring replenishment | High |
+- Inventory product configuration
+- Vendor management
+- Reordering rule configuration
+- Replenishment identification
+- RFQ generation
+- Purchase order confirmation
+- Goods receipt validation
+- Stock quantity verification
 
-| BR-04 | Generate purchase RFQs | High |
+### 5.2 Out of Scope
 
-| BR-05 | Confirm purchase orders | High |
+- Manufacturing execution
+- Accounting implementation
+- Sales management
+- Custom module development
+- External supplier system integration
 
-| BR-06 | Validate incoming goods receipts | High |
+## 6. Expected Business Benefits
 
-| BR-07 | Update inventory after receipt validation | High |
+The proposed Odoo workflows are expected to provide:
 
+- Improved inventory visibility.
+- More structured procurement coordination.
+- Better control over stock replenishment.
+- Improved purchase order traceability.
+- Reduced reliance on manual inventory tracking.
 
+*Note: These are expected benefits of the proposed process, not measured business results.*
 
-\## 5. Project Scope
+## 7. Assumptions and Constraints
 
+- Apex Components Pvt. Ltd. is a hypothetical organization created for this case study.
+- Existing operational problems and the AS-IS workflow are assumed for analysis purposes; they are not based on an actual company audit.
+- Odoo Community Edition is used in a local environment.
+- Product, vendor and transaction records are sample data created for demonstration.
+- Functional testing is limited to the inventory and procurement workflow demonstrated in Odoo.
 
+## 8. Acceptance Criteria
 
-\### In Scope
+The proposed workflow is considered functionally demonstrated when:
 
-\- Inventory product configuration
-
-\- Vendor management
-
-\- Reordering rules
-
-\- RFQ generation
-
-\- Purchase order confirmation
-
-\- Goods receipt and stock verification
-
-
-
-\### Out of Scope
-
-\- Manufacturing execution
-
-\- Accounting implementation
-
-\- Sales management
-
-\- Custom development
-
-\- External supplier integration
-
-
-
-\## 6. Expected Business Benefits
-
-
-
-\- Improved inventory visibility
-
-\- Structured procurement coordination
-
-\- Better stock replenishment control
-
-\- Improved purchase order traceability
-
-\- Reduced reliance on manual inventory tracking
-
-
-
-\## 7. Assumptions
-
-
-
-This is a hypothetical business case study. Operational problems and the existing manual workflow are assumed for analysis purposes. Odoo configuration and transaction results are demonstrated using a sample dataset.
-
+1. Products and vendors can be maintained in Odoo.
+2. Minimum and maximum stock thresholds can be configured.
+3. Low-stock products can be identified through the replenishment screen.
+4. A replenishment proposal can generate an RFQ.
+5. An RFQ can be confirmed as a purchase order.
+6. An incoming goods receipt can be validated.
+7. The received quantity is reflected in the updated inventory balance.
