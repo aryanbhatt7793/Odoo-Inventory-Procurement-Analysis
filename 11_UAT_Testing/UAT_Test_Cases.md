@@ -1,94 +1,97 @@
-\# USER ACCEPTANCE TESTING (UAT)
+# USER ACCEPTANCE TESTING (UAT)
 
+## 1. Test Environment
 
+| Parameter | Details |
+|---|---|
+| ERP Platform | Odoo Community Edition |
+| Modules | Inventory and Purchase |
+| Environment | Local test database |
+| Test Database | apex_manufacturing |
+| Test Product | Steel Sheets |
+| Test Vendor | Metro Steel Suppliers |
+| Test Type | Functional Workflow Testing |
 
-\## Test Environment
+## 2. UAT Test Scenarios
 
-\- ERP: Odoo Community Edition
+The following test cases validate the product setup, vendor configuration, inventory replenishment and procurement workflow.
 
-\- Modules: Inventory and Purchase
+| Test ID | Test Scenario | Expected Result | Actual Result | Status |
+|---|---|---|---|---|
+| TC-01 | Create raw material product | Product record created successfully | Product record created | Pass |
+| TC-02 | Create vendor | Vendor record created successfully | Vendor record created | Pass |
+| TC-03 | Receive initial purchase of 100 units | Stock quantity becomes 100 | Stock quantity verified as 100 | Pass |
+| TC-04 | Configure reordering rule | Minimum 20 and maximum 100 saved | Reordering rule saved | Pass |
+| TC-05 | Simulate stock consumption | Stock quantity reduces from 100 to 15 | Stock quantity verified as 15 | Pass |
+| TC-06 | Generate replenishment proposal | Replenishment quantity of 85 proposed | Proposal showed 85 units | Pass |
+| TC-07 | Confirm purchase order | RFQ converted into a confirmed PO | Purchase Order confirmed | Pass |
+| TC-08 | Validate goods receipt | Final stock quantity becomes 100 | Stock quantity verified as 100 | Pass |
 
-\- Test Product: Steel Sheets
+## 3. Detailed Test Scenario – Inventory Replenishment
 
-\- Test Vendor: Metro Steel Suppliers
+### 3.1 Preconditions
 
+- Product: Steel Sheets
+- Vendor: Metro Steel Suppliers
+- Current stock quantity: 15 units
+- Minimum stock quantity: 20 units
+- Maximum stock quantity: 100 units
+- Reordering rule trigger: Manual
 
+### 3.2 Test Execution Steps
 
-\## Test Scenarios
+1. Open the Inventory application.
+2. Navigate to the Replenishment screen.
+3. Identify Steel Sheets as a product requiring replenishment.
+4. Verify the proposed replenishment quantity.
+5. Execute the replenishment action to generate an RFQ.
+6. Open and verify the generated RFQ.
+7. Confirm the RFQ to create a Purchase Order.
+8. Open the incoming warehouse receipt.
+9. Validate the goods receipt.
+10. Verify the updated inventory quantity.
 
+### 3.3 Expected Results
 
+- Replenishment proposal: 85 units.
+- RFQ generated successfully.
+- Purchase Order confirmed successfully.
+- Incoming goods receipt validated successfully.
+- Final inventory quantity: 100 units.
 
-| Test ID | Test Scenario | Expected Result | Actual Result |
+### 3.4 Actual Results
 
-|---|---|---|---|
+The test execution produced the following results:
 
-| TC-01 | Create raw material product | Product record created | Pass |
+- Odoo identified the replenishment requirement when stock reached 15 units.
+- A replenishment proposal of 85 units was generated.
+- The RFQ was created and confirmed as a Purchase Order.
+- The incoming receipt for 85 units was validated.
+- The final inventory quantity was verified as 100 units.
 
-| TC-02 | Create vendor | Vendor record created | Pass |
+<text color="success" weight="semibold" size="sm">Overall test result: PASS</text>
 
-| TC-03 | Receive initial purchase of 100 units | Stock becomes 100 | Pass |
+## 4. UAT Acceptance Criteria
 
-| TC-04 | Configure reordering rule | Min 20, Max 100 saved | Pass |
+The workflow is considered successfully demonstrated when:
 
-| TC-05 | Adjust stock from 100 to 15 | Stock becomes 15 | Pass |
+1. Product and vendor records are available in Odoo.
+2. Reordering rules save the configured minimum and maximum quantities.
+3. The replenishment screen identifies stock below the minimum threshold.
+4. The proposed replenishment quantity is correct.
+5. An RFQ can be generated and confirmed as a Purchase Order.
+6. Goods receipt validation updates the inventory balance correctly.
 
-| TC-06 | Generate replenishment proposal | 85 units proposed | Pass |
+## 5. Test Conclusion
 
-| TC-07 | Confirm purchase order | RFQ converted to PO | Pass |
+All eight documented test cases passed for the demonstrated Steel Sheets scenario in the local Odoo test environment.
 
-| TC-08 | Validate goods receipt | Stock becomes 100 | Pass |
+The test confirms the functional flow from inventory replenishment identification through RFQ generation, Purchase Order confirmation and goods receipt validation.
 
+**Testing Limitations:**
 
-
-\## Detailed Test Scenario: Replenishment
-
-
-
-Precondition:
-
-\- Current stock: 15 units
-
-\- Minimum quantity: 20
-
-\- Maximum quantity: 100
-
-
-
-Execution:
-
-1\. Open Inventory replenishment.
-
-2\. Identify the Steel Sheets shortage.
-
-3\. Execute replenishment.
-
-4\. Verify the generated RFQ.
-
-5\. Confirm the purchase order.
-
-6\. Validate the incoming goods receipt.
-
-
-
-Expected Result:
-
-\- Replenishment quantity: 85 units.
-
-\- Purchase order successfully confirmed.
-
-\- Goods receipt successfully validated.
-
-\- Final stock: 100 units.
-
-
-
-\## Test Conclusion
-
-
-
-The demonstrated end-to-end replenishment scenario passed validation using the sample Odoo database.
-
-
-
-Note: Results apply to the demonstrated Steel Sheets scenario. Other products were created but not independently tested through the full procurement cycle.
-
+- Testing was performed using sample product, vendor and transaction data.
+- The full procurement cycle was tested only for Steel Sheets.
+- Aluminium Rods and Copper Wire were created but were not independently tested through the complete procurement workflow.
+- Stock reduction was simulated using an inventory adjustment; it was not generated by an actual manufacturing consumption transaction.
+- This UAT exercise demonstrates functional behavior and does not represent formal customer acceptance or production deployment.
